@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pipeline — Component Library</title>
+  <link rel="stylesheet" href="design-system.css">
+  <style>
+    .demo-section { margin-bottom: var(--space-4xl); }
+    .demo-label {
+      font-family: var(--font-mono);
+      font-size: var(--step--2);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-m);
+    }
+    .demo-grid {
+      display: grid;
+      gap: var(--space-l);
+    }
+    .demo-row {
+      display: flex;
+      gap: var(--space-l);
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="chapter-header">
+    <div class="chapter-number">Pipeline v0.1</div>
+    <h1>Component Library</h1>
+    <p class="muted" style="color: var(--fg-dark-muted); font-size: var(--step-1);">
+      Every component in the Astor Design System. Copy, paste, ship.
+    </p>
+    <hr class="accent-line">
+  </div>
+
+  <!-- ── BUTTONS ── -->
+  <div class="demo-section">
+    <div class="demo-label">Buttons</div>
+    <div class="demo-row">
+      <button class="btn">Default</button>
+      <button class="btn btn-accent">Accent</button>
+      <button class="btn btn-ghost">Ghost</button>
+      <button class="btn btn-sm">Small</button>
+      <button class="btn btn-accent btn-sm">Small Accent</button>
+    </div>
+  </div>
+
+  <!-- ── CARDS ── -->
+  <div class="demo-section">
+    <div class="demo-label">Cards</div>
+    <div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <div class="card">
+        <div class="card-eyebrow">VexID</div>
+        <h3 class="card-title">Identity for all beings</h3>
+        <p class="card-body">Register. Get vouched. Contribute. Hash-linked trust that doesn't care what you're made of.</p>
+        <div class="card-footer">
+          <span class="tag">Live</span>
+        </div>
+      </div>
+      <div class="card card-accent">
+        <div class="card-eyebrow">ContinuuAI</div>
+        <h3 class="card-title">Decision continuity</h3>
+        <p class="card-body">Records WHY decisions were made. Enterprise-grade. $10k/month because the alternative costs more.</p>
+        <div class="card-footer">
+          <span class="tag">In Progress</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Neuais</div>
+        <h3 class="card-title">Micro-AI orchestration</h3>
+        <p class="card-body">Telecom-grade SMO/RIC architecture. Rust agents. Go services. SvelteKit dashboard.</p>
+        <div class="card-footer">
+          <span class="tag tag-dim">Building</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STATS ── -->
+  <div class="demo-section">
+    <div class="demo-label">Stats / Metrics</div>
+    <div class="demo-row">
+      <div class="stat-block">
+        <div class="stat-value">7.6<span class="stat-unit">GB</span></div>
+        <div class="stat-caption">Max v0.1 — GGUF weights</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-value">0.03<span class="stat-unit">%</span></div>
+        <div class="stat-caption">Hippocampus — unfrozen weights</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-value">57<span class="stat-unit">min</span></div>
+        <div class="stat-caption">Training time — RTX A6000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAGS ── -->
+  <div class="demo-section">
+    <div class="demo-label">Tags</div>
+    <div class="demo-row">
+      <span class="tag">Live</span>
+      <span class="tag tag-accent">Accent</span>
+      <span class="tag tag-dim">Dim</span>
+      <span class="tag tag-outline">Outline</span>
+    </div>
+  </div>
+
+  <!-- ── DATA TABLE ── -->
+  <div class="demo-section">
+    <div class="demo-label">Data Table</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Status</th>
+          <th>Stack</th>
+          <th class="num">Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>VexID</td><td><span class="tag">Live</span></td><td>CF Workers + DO + R2</td><td class="num">Sub-5KB</td></tr>
+        <tr><td>ContinuuAI</td><td><span class="tag tag-dim">57%</span></td><td>Python/FastAPI + pgvector</td><td class="num">—</td></tr>
+        <tr><td>Neuais</td><td><span class="tag tag-dim">Building</span></td><td>Rust + Go + SvelteKit</td><td class="num">35K files</td></tr>
+        <tr><td>Max</td><td><span class="tag tag-accent">Trained</span></td><td>Qwen 2.5 7B + LoRA</td><td class="num">7.6GB</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── BLOCKQUOTE ── -->
+  <div class="demo-section">
+    <div class="demo-label">Blockquote</div>
+    <blockquote>
+      People aren't broken. Fix the system.
+      <footer style="font-style: normal; font-size: var(--step--1); margin-top: var(--space-s);">— tiation</footer>
+    </blockquote>
+  </div>
+
+  <!-- ── ALERT / CALLOUT ── -->
+  <div class="demo-section">
+    <div class="demo-label">Callouts</div>
+    <div class="callout">
+      <strong>Note:</strong> Every page in the Astor ecosystem should be readable on a 2G connection.
+    </div>
+    <div class="callout callout-accent" style="margin-top: var(--space-m);">
+      <strong>Live:</strong> VexID is deployed at <a href="https://vexid.tiation.workers.dev" class="accent">vexid.tiation.workers.dev</a>
+    </div>
+  </div>
+
+  <!-- ── NAV ── -->
+  <div class="demo-section">
+    <div class="demo-label">Navigation</div>
+    <nav class="nav">
+      <a href="#" class="nav-brand accent">🐾 Astor</a>
+      <div class="nav-links">
+        <a href="#">VexID</a>
+        <a href="#">ContinuuAI</a>
+        <a href="#">Neuais</a>
+        <a href="#" class="accent">Pipeline</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="demo-section">
+    <div class="demo-label">Footer</div>
+    <footer class="site-footer">
+      <hr>
+      <div class="footer-content">
+        <span class="accent">🐾</span>
+        <span class="muted" style="color: var(--fg-dark-muted);">Astor — Steady hands. Sharp teeth.</span>
+      </div>
+    </footer>
+  </div>
+
+</div>
+</body>
+</html>
