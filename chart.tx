@@ -1,0 +1,32 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2cm,a4paper]{geometry}
+\usepackage{parskip}
+
+\title{Getting psfrag to work in pdflatex }
+
+\usepackage[T1]{fontenc}
+\usepackage{ebgaramond}
+\usepackage{newtxmath}
+
+\usepackage{graphicx}
+\usepackage[process=all]{pstool}
+\usepackage{hyperref}
+
+%%%%% 
+%% NOTE IF LOADING hyperref PACKAGE
+%% These lines are required ≥TL2020 due to 
+%% incompatibility between hyperref and preview
+%% (See https://github.com/latex3/hyperref/issues/166#issuecomment-760157370)
+\makeatletter
+\providecommand\HyPL@Entry[1]{}
+\AddToHook{env/document/begin}{%
+\@ifpackageloaded{preview}{
+\ifPreview
+ \let\Hy@FirstPageHook\relax
+ \let\Hy@EveryPageAnchor\relax
+\fi}{}}
+\makeatother
+\begin{document}
+
+You will still need a \texttt{.eps} image file; there is no \texttt{pdffrag} package that works for \texttt{.pdf} files. 
+

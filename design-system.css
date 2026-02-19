@@ -1,0 +1,367 @@
+/* 
+ * ASTOR DESIGN SYSTEM v0.1
+ * One colour. Maximum whitespace. One accent that pulls.
+ * 
+ * Accent: #0EFFAF (the paw)
+ * Dark mode: near-black background, light text
+ * Light mode: cream/white background, dark text
+ * 
+ * Rules:
+ * 1. One colour owns you — #0EFFAF
+ * 2. White space is the expensive part
+ * 3. The accent does one job: pull the eye
+ * 4. Type does the heavy lifting
+ * 5. Asymmetry with intention
+ * 6. Two fonts maximum: serif for body, sans for heads (or inverse)
+ * 7. Every page sub-5KB renderable
+ */
+
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── TOKENS ── */
+:root {
+  /* Colour */
+  --accent: #0EFFAF;
+  --accent-dim: #0EFFAF33;
+  --accent-glow: #0EFFAF66;
+  
+  /* Dark palette */
+  --bg-dark: #0A0A0A;
+  --bg-dark-surface: #141414;
+  --fg-dark: #E8E4DE;
+  --fg-dark-muted: #8A8780;
+  
+  /* Light palette */
+  --bg-light: #FAF9F6;
+  --bg-light-surface: #F0EEEA;
+  --fg-light: #1A1A1A;
+  --fg-light-muted: #6B6966;
+  
+  /* Type scale — minor third (1.2) */
+  --step--2: clamp(0.69rem, 0.66rem + 0.18vw, 0.80rem);
+  --step--1: clamp(0.83rem, 0.78rem + 0.25vw, 0.96rem);
+  --step-0:  clamp(1.00rem, 0.93rem + 0.33vw, 1.15rem);
+  --step-1:  clamp(1.20rem, 1.11rem + 0.43vw, 1.38rem);
+  --step-2:  clamp(1.44rem, 1.32rem + 0.56vw, 1.66rem);
+  --step-3:  clamp(1.73rem, 1.57rem + 0.74vw, 1.99rem);
+  --step-4:  clamp(2.07rem, 1.87rem + 0.97vw, 2.39rem);
+  --step-5:  clamp(2.49rem, 2.23rem + 1.26vw, 2.87rem);
+  --step-6:  clamp(2.99rem, 2.65rem + 1.63vw, 3.44rem);
+  
+  /* Spacing — golden ratio adjacent */
+  --space-xs: 0.25rem;
+  --space-s:  0.5rem;
+  --space-m:  1rem;
+  --space-l:  1.618rem;
+  --space-xl: 2.618rem;
+  --space-2xl: 4.236rem;
+  --space-3xl: 6.854rem;
+  --space-4xl: 11.09rem;
+  
+  /* Measure — optimal line length */
+  --measure: 65ch;
+  --measure-narrow: 45ch;
+  --measure-wide: 80ch;
+  
+  /* Fonts */
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-sans: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+/* ── DARK MODE (default) ── */
+body {
+  background: var(--bg-dark);
+  color: var(--fg-dark);
+  font-family: var(--font-serif);
+  font-size: var(--step-0);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── LIGHT MODE ── */
+body.light {
+  background: var(--bg-light);
+  color: var(--fg-light);
+}
+body.light .muted { color: var(--fg-light-muted); }
+body.light .surface { background: var(--bg-light-surface); }
+
+/* ── LAYOUT ── */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl);
+}
+
+.content {
+  max-width: var(--measure);
+}
+
+.content-wide {
+  max-width: var(--measure-wide);
+}
+
+.content-narrow {
+  max-width: var(--measure-narrow);
+}
+
+/* Tufte-style: main column + margin notes */
+.tufte {
+  display: grid;
+  grid-template-columns: 1fr min(var(--measure), 100%) 1fr;
+  padding: var(--space-2xl) var(--space-m);
+}
+
+.tufte > * {
+  grid-column: 2;
+}
+
+.tufte > .margin-note {
+  grid-column: 3;
+  font-size: var(--step--1);
+  color: var(--fg-dark-muted);
+  padding-left: var(--space-l);
+  max-width: 20ch;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--step-6);
+  margin-bottom: var(--space-xl);
+}
+
+h2 {
+  font-size: var(--step-4);
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-l);
+}
+
+h3 {
+  font-size: var(--step-2);
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-m);
+}
+
+p {
+  margin-bottom: var(--space-l);
+  max-width: var(--measure);
+}
+
+/* First paragraph after heading — no indent, slightly larger */
+h2 + p, h3 + p {
+  font-size: var(--step-1);
+  line-height: 1.6;
+}
+
+/* Drop cap for chapter opening */
+.drop-cap::first-letter {
+  float: left;
+  font-size: var(--step-6);
+  line-height: 0.8;
+  padding-right: var(--space-s);
+  padding-top: var(--space-xs);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: var(--space-l);
+  margin: var(--space-2xl) 0;
+  font-style: italic;
+  color: var(--fg-dark-muted);
+}
+
+/* ── ACCENT ── */
+.accent { color: var(--accent); }
+
+.accent-line {
+  width: 4rem;
+  height: 3px;
+  background: var(--accent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+.accent-glow {
+  text-shadow: 0 0 40px var(--accent-glow);
+}
+
+/* ── THE EYE (Deloitte-killer cover) ── */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-3xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.cover .eye {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 40vmin;
+  height: 40vmin;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent) 0%, var(--accent-dim) 40%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.cover h1 {
+  position: relative;
+  z-index: 1;
+  font-size: var(--step-6);
+  max-width: 12ch;
+}
+
+.cover .subtitle {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+  font-weight: 300;
+  color: var(--fg-dark-muted);
+  margin-top: var(--space-m);
+}
+
+/* ── CHAPTER HEADER ── */
+.chapter-header {
+  padding: var(--space-4xl) 0 var(--space-3xl);
+}
+
+.chapter-number {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: var(--space-m);
+}
+
+/* ── HORIZONTAL RULE ── */
+hr {
+  border: none;
+  height: 1px;
+  background: var(--fg-dark-muted);
+  opacity: 0.2;
+  margin: var(--space-3xl) 0;
+}
+
+/* ── EMPHASIS PATTERNS ── */
+strong {
+  font-weight: 700;
+  color: var(--fg-dark);
+}
+
+body.light strong {
+  color: var(--fg-light);
+}
+
+em {
+  font-style: italic;
+}
+
+/* Bold + italic = accent colour */
+strong em, em strong {
+  color: var(--accent);
+  font-style: normal;
+}
+
+/* ── SIDENOTE (Tufte) ── */
+.sidenote {
+  font-size: var(--step--1);
+  color: var(--fg-dark-muted);
+  float: right;
+  clear: right;
+  margin-right: -14rem;
+  width: 12rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+.sidenote-number {
+  font-size: var(--step--2);
+  color: var(--accent);
+  vertical-align: super;
+}
+
+/* ── PRESENTATION MODE (pptx-killer) ── */
+.slide {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-3xl);
+}
+
+.slide h1 {
+  font-size: var(--step-6);
+  max-width: 15ch;
+}
+
+.slide p {
+  font-size: var(--step-2);
+  max-width: var(--measure-narrow);
+  color: var(--fg-dark-muted);
+}
+
+.slide .stat {
+  font-family: var(--font-sans);
+  font-size: clamp(4rem, 10vw, 10rem);
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.slide .stat-label {
+  font-size: var(--step-1);
+  color: var(--fg-dark-muted);
+  margin-top: var(--space-s);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .cover { padding: var(--space-xl); }
+  .page { padding: var(--space-l) var(--space-m); }
+  .slide { padding: var(--space-xl) var(--space-m); }
+  .sidenote {
+    float: none;
+    margin: var(--space-m) 0;
+    width: 100%;
+    padding: var(--space-m);
+    background: var(--bg-dark-surface);
+    border-radius: 4px;
+  }
+  .tufte { grid-template-columns: 1fr; }
+  .tufte > .margin-note {
+    grid-column: 1;
+    max-width: 100%;
+    padding: var(--space-m);
+    background: var(--bg-dark-surface);
+    border-radius: 4px;
+    margin: var(--space-m) 0;
+  }
+}
+
+/* ── PRINT ── */
+@media print {
+  body { background: white; color: black; font-size: 11pt; }
+  .cover .eye { display: none; }
+  .slide { min-height: auto; page-break-after: always; }
+  .accent { color: black; }
+  .accent-line { background: black; }
+}

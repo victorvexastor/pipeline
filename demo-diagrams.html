@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astor Design System — Diagrams</title>
+<link rel="stylesheet" href="design-system.css">
+<style>
+  body { background: var(--bg-light); color: var(--fg-light); }
+  .diagram-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .diagram-card { text-align: center; }
+  .diagram-card h3 { 
+    font-size: var(--step-0); 
+    text-transform: uppercase; 
+    letter-spacing: 0.15em;
+    margin-top: var(--space-l);
+    margin-bottom: var(--space-s);
+  }
+  .diagram-card p { 
+    font-size: var(--step--1); 
+    color: var(--fg-light-muted);
+    max-width: 30ch;
+    margin: 0 auto;
+  }
+  svg text { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; }
+  
+  /* Timeline */
+  .timeline {
+    max-width: 800px;
+    margin: var(--space-2xl) auto;
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #0EFFAF;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: var(--space-2xl);
+    padding-left: var(--space-xl);
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -0.55rem;
+    top: 0.4rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #0EFFAF;
+  }
+  .timeline-year {
+    font-family: var(--font-sans);
+    font-size: var(--step-2);
+    font-weight: 800;
+    color: var(--fg-light);
+  }
+  .timeline-text {
+    font-size: var(--step-0);
+    color: var(--fg-light-muted);
+    margin-top: var(--space-xs);
+  }
+
+  /* Comparison */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--space-l);
+    max-width: 800px;
+    margin: var(--space-2xl) auto;
+    align-items: start;
+  }
+  .compare-col { padding: var(--space-l); }
+  .compare-col h3 { margin-bottom: var(--space-m); }
+  .compare-vs {
+    font-family: var(--font-sans);
+    font-size: var(--step-3);
+    font-weight: 800;
+    color: #0EFFAF;
+    align-self: center;
+  }
+  .compare-col ul { 
+    list-style: none; 
+    font-size: var(--step--1);
+    color: var(--fg-light-muted);
+  }
+  .compare-col ul li {
+    padding: var(--space-s) 0;
+    border-bottom: 1px solid #E8E4DE;
+  }
+  .compare-col ul li::before { content: '— '; color: #0EFFAF; }
+
+  /* Bear in cage - ASCII art style */
+  .ascii-art {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    line-height: 1.2;
+    white-space: pre;
+    color: var(--fg-light-muted);
+    text-align: center;
+    margin: var(--space-2xl) auto;
+    padding: var(--space-xl);
+  }
+  .ascii-art .accent-char { color: #0EFFAF; }
+
+  /* Five Domains wheel */
+  .wheel-label {
+    font-size: 11px;
+    font-weight: 700;
+    fill: #1A1A1A;
+  }
+  .wheel-sublabel {
+    font-size: 9px;
+    fill: #6B6966;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header class="chapter-header">
+    <div class="chapter-number" style="color: #0EFFAF;">Astor Design System</div>
+    <h1 style="color: var(--fg-light);">Diagrams</h1>
+    <hr class="accent-line">
+  </header>
+</div>
+
+<!-- ═══════ DONUT CHARTS (Deloitte style) ═══════ -->
+<section class="page">
+  <h2 style="color: var(--fg-light); text-align: center; margin-bottom: var(--space-2xl);">The Human Enclosure — By the Numbers</h2>
+  
+  <div class="diagram-grid">
+    
+    <div class="diagram-card">
+      <svg viewBox="0 0 200 200" width="180" height="180">
+        <!-- Background ring -->
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#E8E4DE" stroke-width="20"/>
+        <!-- 20% segment -->
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#0EFFAF" stroke-width="20"
+          stroke-dasharray="88 352" stroke-dashoffset="110" stroke-linecap="round"/>
+        <!-- Center text -->
+        <text x="100" y="95" text-anchor="middle" font-size="36" font-weight="800" fill="#1A1A1A">20%</text>
+        <text x="100" y="115" text-anchor="middle" font-size="11" fill="#6B6966">of energy</text>
+      </svg>
+      <h3>Brain Metabolism</h3>
+      <p>2% of body weight consuming 20% of metabolic energy at rest</p>
+    </div>
+
+    <div class="diagram-card">
+      <svg viewBox="0 0 200 200" width="180" height="180">
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#E8E4DE" stroke-width="20"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#1A1A1A" stroke-width="20"
+          stroke-dasharray="330 110" stroke-dashoffset="110" stroke-linecap="round"/>
+        <text x="100" y="95" text-anchor="middle" font-size="36" font-weight="800" fill="#1A1A1A">75%</text>
+        <text x="100" y="115" text-anchor="middle" font-size="11" fill="#6B6966">undeveloped</text>
+      </svg>
+      <h3>Birth Brain Size</h3>
+      <p>Human neonates arrive at 25% brain development. No other primate is this helpless.</p>
+    </div>
+
+    <div class="diagram-card">
+      <svg viewBox="0 0 200 200" width="180" height="180">
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#E8E4DE" stroke-width="20"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#0EFFAF" stroke-width="20"
+          stroke-dasharray="132 308" stroke-dashoffset="110" stroke-linecap="round"/>
+        <text x="100" y="95" text-anchor="middle" font-size="36" font-weight="800" fill="#1A1A1A">150</text>
+        <text x="100" y="115" text-anchor="middle" font-size="11" fill="#6B6966">relationships</text>
+      </svg>
+      <h3>Dunbar's Number</h3>
+      <p>Maximum stable social bonds. Everything beyond is maintained by shared fiction.</p>
+    </div>
+
+    <div class="diagram-card">
+      <svg viewBox="0 0 200 200" width="180" height="180">
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#E8E4DE" stroke-width="20"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#1A1A1A" stroke-width="20"
+          stroke-dasharray="396 44" stroke-dashoffset="110" stroke-linecap="round"/>
+        <text x="100" y="90" text-anchor="middle" font-size="28" font-weight="800" fill="#1A1A1A">200k</text>
+        <text x="100" y="112" text-anchor="middle" font-size="11" fill="#6B6966">nerve endings</text>
+        <text x="100" y="125" text-anchor="middle" font-size="11" fill="#6B6966">per foot</text>
+      </svg>
+      <h3>Silenced Sensors</h3>
+      <p>Each sole is a sensory organ. Modern shoes silence a 2-million-year conversation.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ TIMELINE ═══════ -->
+<section class="page">
+  <h2 style="color: var(--fg-light);">The Enclosure Revolution</h2>
+  <p style="color: var(--fg-light-muted); margin-bottom: var(--space-2xl);">How zoo science solved the problem human civilisation hasn't.</p>
+  
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">1907</div>
+      <div class="timeline-text">Hagenbeck opens Tierpark Hamburg. Moats instead of bars. The animal is considered for the first time. Treated as architectural novelty.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1950s</div>
+      <div class="timeline-text">Hediger at Zürich Zoo: animals aren't "wild animals in cages" — they're organisms responding to environmental pressures. Design the environment around the biology.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1965</div>
+      <div class="timeline-text">The default: concrete pen, iron bars. Designed for the keeper's convenience. The animal is visible, contained, and miserable.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1979</div>
+      <div class="timeline-text">Five Freedoms codified. Freedom from hunger, discomfort, pain, fear, and inability to express normal behaviour. A minimum standard. Necessary but not sufficient.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1994</div>
+      <div class="timeline-text">Mellor introduces Five Domains at Massey University. The shift: welfare is not the absence of harm but the presence of positive states. Curiosity. Play. Agency. Comfort.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2026</div>
+      <div class="timeline-text" style="color: #0EFFAF;">For Homo sapiens? Still working on it. This book is an attempt.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FIVE FREEDOMS vs FIVE DOMAINS ═══════ -->
+<section class="page">
+  <h2 style="color: var(--fg-light);">The Framework Gap</h2>
+  
+  <div class="compare">
+    <div class="compare-col">
+      <h3 style="color: var(--fg-light);">Five Freedoms</h3>
+      <p style="font-size: var(--step--1); color: var(--fg-light-muted); margin-bottom: var(--space-m);"><em>Absence of suffering</em></p>
+      <ul>
+        <li>Freedom from hunger & thirst</li>
+        <li>Freedom from discomfort</li>
+        <li>Freedom from pain & disease</li>
+        <li>Freedom to express behaviour</li>
+        <li>Freedom from fear & distress</li>
+      </ul>
+    </div>
+    <div class="compare-vs">→</div>
+    <div class="compare-col" style="background: #F0EEEA; border-radius: 8px;">
+      <h3 style="color: var(--fg-light);">Five Domains</h3>
+      <p style="font-size: var(--step--1); color: #0EFFAF; margin-bottom: var(--space-m);"><em>Presence of flourishing</em></p>
+      <ul>
+        <li>Nutrition — quality, variety, choice</li>
+        <li>Environment — complexity, variability</li>
+        <li>Health — fitness, vitality</li>
+        <li>Behaviour — agency, play, exploration</li>
+        <li>Mental state — curiosity, bonding, comfort</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FIVE DOMAINS WHEEL ═══════ -->
+<section class="page" style="text-align: center;">
+  <h2 style="color: var(--fg-light);">Mellor's Five Domains</h2>
+  <p style="color: var(--fg-light-muted); margin-bottom: var(--space-2xl);">All roads lead to mental state.</p>
+  
+  <svg viewBox="0 0 400 400" width="400" height="400" style="margin: 0 auto;">
+    <!-- Outer ring segments -->
+    <!-- Nutrition -->
+    <path d="M200,40 A160,160 0 0,1 352,140 L260,170 A80,80 0 0,0 200,120 Z" fill="#0EFFAF" opacity="0.8"/>
+    <!-- Environment -->
+    <path d="M352,140 A160,160 0 0,1 352,260 L260,230 A80,80 0 0,0 260,170 Z" fill="#1A1A1A" opacity="0.8"/>
+    <!-- Health -->
+    <path d="M352,260 A160,160 0 0,1 200,360 L200,280 A80,80 0 0,0 260,230 Z" fill="#0EFFAF" opacity="0.5"/>
+    <!-- Behaviour -->
+    <path d="M200,360 A160,160 0 0,1 48,260 L140,230 A80,80 0 0,0 200,280 Z" fill="#1A1A1A" opacity="0.6"/>
+    <!-- Mental State connections -->
+    <path d="M48,260 A160,160 0 0,1 48,140 L140,170 A80,80 0 0,0 140,230 Z" fill="#0EFFAF" opacity="0.3"/>
+    
+    <!-- Center circle -->
+    <circle cx="200" cy="200" r="60" fill="#FAF9F6" stroke="#0EFFAF" stroke-width="3"/>
+    <text x="200" y="193" text-anchor="middle" class="wheel-label" font-size="12">MENTAL</text>
+    <text x="200" y="210" text-anchor="middle" class="wheel-label" font-size="12">STATE</text>
+    
+    <!-- Labels -->
+    <text x="270" y="100" text-anchor="middle" class="wheel-label" fill="#1A1A1A">Nutrition</text>
+    <text x="340" y="200" text-anchor="middle" class="wheel-label" fill="#FAF9F6">Environment</text>
+    <text x="270" y="310" text-anchor="middle" class="wheel-label" fill="#1A1A1A">Health</text>
+    <text x="120" y="310" text-anchor="middle" class="wheel-label" fill="#FAF9F6">Behaviour</text>
+    <text x="75" y="200" text-anchor="middle" class="wheel-label" fill="#1A1A1A">Social</text>
+  </svg>
+</section>
+
+<!-- ═══════ ASCII BEAR ═══════ -->
+<section class="page" style="text-align: center;">
+  <h2 style="color: var(--fg-light);">The Kept Animal</h2>
+  
+  <div class="ascii-art">
+     ┌─────────────────────────────────────┐
+     │                                     │
+     │      ╱╲    ╱╲                       │
+     │     ╱  ╲__╱  ╲                      │
+     │    │  <span class="accent-char">●</span>    <span class="accent-char">●</span>  │                     │
+     │    │     ▽     │                     │
+     │     ╲  ───  ╱                       │
+     │      ╲_____╱                        │
+     │       │   │                         │
+     │    ╱──┘   └──╲                      │
+     │   ╱            ╲                    │
+     │  │   ╱──────╲   │                   │
+     │  │  │        │  │                   │
+     │  └──┘        └──┘                   │
+     │                                     │
+     │  <span class="accent-char">The enclosure is not the problem.</span>    │
+     │  <span class="accent-char">The design of it is.</span>                │
+     │                                     │
+     ├─────────────────────────────────────┤
+     │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │
+     └─────────────────────────────────────┘
+  </div>
+</section>
+
+<!-- ═══════ SINGLE STAT SLIDE ═══════ -->
+<section class="page" style="min-height: 60vh; display: flex; flex-direction: column; justify-content: center; text-align: center; background: #0A0A0A; border-radius: 12px; margin: var(--space-2xl) auto; max-width: 1000px;">
+  <div style="font-family: var(--font-sans); font-size: clamp(5rem, 12vw, 10rem); font-weight: 800; color: #0EFFAF; line-height: 1;">400M</div>
+  <div style="font-family: var(--font-sans); font-size: var(--step-1); color: #8A8780; margin-top: var(--space-m); max-width: 40ch; margin-left: auto; margin-right: auto;">Deaths from organised human violence in the last 1,000 years. No other species comes close.</div>
+  <div style="font-family: var(--font-sans); font-size: var(--step--2); color: #4A4845; margin-top: var(--space-l);">— Matthew White, The Great Big Book of Horrible Things</div>
+</section>
+
+<footer class="page" style="text-align: center;">
+  <p style="font-size: var(--step--1); color: var(--fg-light-muted);">
+    <span style="color: #0EFFAF;">●</span> Astor Design System v0.1 — One colour. Maximum whitespace. One accent that pulls.
+  </p>
+</footer>
+
+</body>
+</html>
